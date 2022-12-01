@@ -10,6 +10,8 @@ RSS Feed: [https://thewover.github.io/rss.xml](https://thewover.github.io/rss.xm
 
 ### Contact me
 
+Mastadon: <a rel="me" href="https://infosec.exchange/@thewover">https://infosec.exchange/@thewover</a>
+
 Twitter: [https://twitter.com/TheRealWover](https://twitter.com/TheRealWover)
 
 Keybase: [https://keybase.io/thewover](https://keybase.io/thewover)

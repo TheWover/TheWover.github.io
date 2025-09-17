@@ -78,7 +78,7 @@ Everything is a node; a node is everything.
 
 Verbweaver uses a unified data model where every node (idea or piece of information) is a Markdown file with YAML metadata. Write whatever you want. Daily notes, task details, chapters of a book, technical findings, etc. That is the “content” of the node.
 
-The content is written in  Pandoc formatting, which supports advanced formatting such as tables, lists, images, links, and more. This formatting will be preserved when you export your project to your preferred filetype.
+The content is written in [Pandoc formatting](https://pandoc.org/MANUAL.html#pandocs-markdown), which supports advanced formatting such as tables, lists, images, links, and more. This formatting will be preserved when you export your project to your preferred filetype.
 
 Meanwhile, the YAML metadata is used to track the status of the node as a Task, recording its status, start/due dates, assignee, comments, and more. You can also store custom variables in the metadata (such as chapter and tension in the example) that may be referenced by other nodes and document templates when it comes time to generate a document from your project.
 
@@ -150,6 +150,148 @@ Nodes may be linked to each other. These links are displayed on the Mind Map as 
 
 If a node is tracked as a Task, then it has various task-tracking metadata. Files may also be attached to it for reference. If those files are images then they may be (optionally) rendered in compiled documents.
 
+### Custom Variables
+
+The last two variables `chapter` and `tension` are custom node variables. Nodes can have any number of customer variables. The variables may be referenced in the content of the node, in the content of a different nodes (using the node ID as shown above), and inside of a compiler template so that they may be used in the procedural generation of documents.
+
+## Version Control
+
+All Verbweaver projects are also a Git repository. As such, all of the many powers of Git are automatically at your disposal. Because all of Verbweaver project files are flat files (no binary files here), they are easy to read, edit, diff, and resolve merge conflicts for using standard file editors or even the web editor on GitHub/Gitlab.
+
+Despite this being a technical blog, Verbweaver is designed to be usable by non-technical users. As such, the Version Control view provides a simple, intuitive user interface for common version control functions. But technical users may always access Git's mode advanced features using the Git CLI like they would with any other Git repository.
+
+TODO: Insert screenshot
+
+## Procedural Document Generation
+
+Once you have brain-dumped your ideas in whatever format works best for you, you may want to communicate (some) of it to other people. That’s the job for your favorite linear document format (Markdown, Word, PDF, ODT, EPUB). File type conversion is accomplished using [Pandoc](https://pandoc.org/).
+
+But how do you translate your nonlinear project to a linear format? Using the Compiler:
+
+1) Select your nodes
+2) Order your nodes
+3) Pick a filetype
+4) Pick from a (customizable) document template
+5) Plug in variables used by the template
+6) Procedurally generate a document
+
+This powerful, template-based engine lets you construct flexible templates, reference variables, and embed logic to generate a document that is organized and formatted the way that you would prefer.
+
+Note: Pandoc and some LaTeX tool are required in order to use the Compiler.
+
+### Compiler Templates
+
+Compiler templates provide great flexibility and control over the structure and format of your document.
+
+In the example below, we have a “Technical Report” template. This is designed to fill the need of a technical corporate report, such as a project update, penetration test or red team report, or documentation.
+
+Since these templates are stored as Markdown files they may easily be copied and shared.
+
+```yaml
+---
+title: $title$
+author: $author$
+date: $date$
+summary: $summary$
+variables:
+  summary:
+    type: string
+    description: Executive summary paragraph.
+  changelog:
+    type: array
+    item:
+      type: object
+      fields:
+        date: { type: string }
+        version: { type: string }
+        author: { type: string }
+        note: { type: string }
+  stakeholders:
+    type: array
+    item:
+      type: object
+      fields:
+        name: { type: string }
+        role: { type: string }
+        contact: { type: string }
+  raci:
+    type: table
+    columnsDefault: ["Task"]
+nodeVariables:
+  appendix:
+    type: boolean
+    label: Appendix
+    description: Treat this node as an appendix section
+    path: metadata.appendix
+    default: false
+  cvss_vector:
+    type: string
+    description: Optional CVSS v3 vector string from node metadata.
+    path: metadata.cvss_vector
+  cvss:
+    type: number
+    description: Optional CVSS base score from node metadata.
+    path: metadata.cvss
+---
+
+# $title$
+
+## Executive Summary
+
+$if(summary)$
+$summary$
+$endif$
+
+## Document Changelog
+
+| Date | Version | Author | Change |
+|------|---------|--------|--------|
+$for(changelog)$
+| $it.date$ | $it.version$ | $it.author$ | $it.note$ |
+$endfor$
+
+## Stakeholder Registry
+
+| Name | Role | Contact |
+|------|------|---------|
+$for(stakeholders)$
+| $it.name$ | $it.role$ | $it.contact$ |
+$endfor$
+
+## RACI Matrix
+
+$raci_markdown$
+
+$for(nodes)$
+$ifnot(nodes.vars.appendix)$
+## $nodes.title$
+
+$nodes.content$
+$endif$
+$endfor$
+
+$if(nodes)$
+## Appendices
+$for(nodes)$
+$if(nodes.vars.appendix)$
+### $nodes.title$
+
+$nodes.content$
+$endif$
+$endfor$
+$endif$
+
+```
+
+### Compiler Logic
+
+The Compiler will perform as many passes as it takes until all variable references are resolved. This ensures that variables can also be used within node content and still be rendered. 
+
+Basic logical functions such as conditional statements and loops are supported using special syntax.
+
+I did consider simply implementing a sandboxed language such as Javascript, rather than using this special syntax. There are pros and cons to my choice. But ultimately I was too concerned about Javascript preventing the application from being aproachable to non-technical users.
+
+I am open to changing this if people find the current compiler template syntax too limited. Let me know if you have a strong preference in the Beta test. 
 
 # Status and Roadmap
 

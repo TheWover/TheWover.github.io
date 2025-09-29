@@ -7,6 +7,8 @@ title: Creating Verbweaver
 
 This blog post is about how and why I created Verbweaver the way that I did. To check out the app, visit the website: https://verbweaver.design/
 
+![_config.yml]({{ site.baseurl }}/images//Verbweaver/Graph.png "Graph") 
+
 # What is Verbweaver?
 
 Verbweaver is a writing and design platform that thinks in relationships (graphs). It's designed for writers, artists, engineers, developers, analysts, and anyone who wants to design things while linking every idea together and turning those ideas into manageable tasks. Think and take notes in a way that is natural to you. Then, when it comes time to communicate your ideas or information to other people, use the Compiler and the powerful templating engine to generate a linear document in various common filetypes.
@@ -141,11 +143,17 @@ Nodes may be linked to each other. These links are displayed on the Mind Map as 
 
 ### Task data
 
+![_config.yml]({{ site.baseurl }}/images//Verbweaver/Tasks.png "Tasks") 
+
 If a node is tracked as a Task, then it has various task-tracking metadata. Files may also be attached to it for reference. If those files are images then they may be (optionally) rendered in compiled documents.
 
 ### Custom Variables
 
 The last two variables `chapter` and `tension` are custom node variables. Nodes can have any number of customer variables. The variables may be referenced in the content of the node, in the content of a different nodes (using the node ID as shown above), and inside of a compiler template so that they may be used in the procedural generation of documents.
+
+You can also generate charts that show the progression of these node variables.
+
+![_config.yml]({{ site.baseurl }}/images//Verbweaver/Progression.png "Progression") 
 
 ## Version Control
 
@@ -153,7 +161,7 @@ All Verbweaver projects are also a Git repository. As such, all of the many powe
 
 Despite this being a technical blog, Verbweaver is designed to be usable by non-technical users. As such, the Version Control view provides a simple, intuitive user interface for common version control functions. But technical users may always access Git's mode advanced features using the Git CLI like they would with any other Git repository.
 
-TODO: Insert screenshot
+![_config.yml]({{ site.baseurl }}/images//Verbweaver/VersionControl.png "Version Control") 
 
 ## Procedural Document Generation
 
@@ -275,6 +283,8 @@ $endfor$
 $endif$
 
 ```
+
+![_config.yml]({{ site.baseurl }}/images//Verbweaver/Templates.png "Templates") 
 
 ### Compiler Logic
 

@@ -5,13 +5,6 @@ title: Creating Verbweaver
 
 *TLDR: Verbweaver is a nonlinear writing and design suite built for your brain with the ability to procedurally generate linear documents when you need to communicate your ideas into other brains. Also, yes AI agents are actually useful (but only as much as you are at managing them).*
 
-Outline:
-What is it?
-Why did I make it?
-How did I make it?
-Show it off
-Links and donate
-
 This blog post is about how and why I created Verbweaver the way that I did. To check out the app, visit the website: https://verbweaver.design/
 
 # What is Verbweaver?
@@ -36,9 +29,9 @@ At some point, though, you will need to communicate that information to somebody
 
 # How did I make Verbweaver?
 
-Verbweaver was designed by me and implemented by AI agents and AI-assisted development tools like Cursor. 
+Verbweaver was designed by me and implemented in significant part by AI agents and AI-assisted development tools like Cursor. 
 
-Initially, I wrote a design prompt with your standard components. I gave the agent an identity and outlined the major components and requirements of the project. I turned Max Mode on in Cursor and ate some cost to generate the skeleton of the application, including both a web server version and a desktop app version that shared as much code as possible. From there I turned off usage-based pricing, contented myself with whatever my $20 / month got me, and iterated. And iterated. And iterated.
+Initially, I wrote a design prompt with your standard components. I gave the agent an identity and outlined the major components and requirements of the project. I turned Max Mode on in Cursor and ate some cost to generate the skeleton of the application, including both a web server version and a desktop app version that shared as much code as possible. From there I turned off usage-based pricing, contented myself with whatever my $20 / month got me, and iterated. And iterated. And iterated...
 
 Like any other application I have developed, I kept track of what remained to do. And my vision and requirements shifted as I progressed. Sometimes I had a vision for a user experience that didn't work as well in reality as it did in my head. And there were many minor technical challenges to overcome. But my years of general software development experience paid off. I knew what software engineering practices were relevant, what design decisions were important, and the tradeoffs associated with various technical solutions. I also knew how to communicate bug reports to the agent(s) in a way that provided enough information for them to find and fix bugs. In other words, I still had to understand software engineering and what would be important for any developer to know before they implemented something for me; whether they were human or machine. Essentially, I acted as a knowledgable Project Manager / Product Owner leading a team of engineers where every decision had to be approved by me. Rather than as a solo engineer implementing everything myself. 
 
@@ -293,13 +286,19 @@ I did consider simply implementing a sandboxed language such as Javascript, rath
 
 I am open to changing this if people find the current compiler template syntax too limited. Let me know if you have a strong preference in the Beta test. 
 
+# Get Verbweaver
+
+To start using Verbweaver, grab it from the GitHub repository's [Releases](https://github.com/Verbweaver/verbweaver/releases) page.
+
+You may use Verbweaver as a desktop app on Windows, MacOS, and Linux. The MacOS version is notarized and stapled for your convenience. For now the Windows version is unsigned due to the expense involved in obtaining a code signing certificate.
+
 # Status and Roadmap
 
 The Verbweaver desktop app is now in a public Beta testing phase.
 
 If it sounds useful to you then please try it out and provide your feedback (ideally as GitHub Issues). If you have an idea for a feature, something doesn't quite work the way you think it should, or the documentation is not accurate, then please let me know. Once I feel that the app has been thoroughly tested and refined I will publish version 1.0.
 
-While Verbweaver is and will remain freely available, when version 1.0 of the desktop app is published it will be available on the Windows Store and Apple Store for those who wish to buy a copy to support development or want the convenience of owning it in their operating system’s app store. You can also [donate](https://verbweaver.design/donate) if wish to do so.
+While Verbweaver is and will remain freely available, when version 1.0 of the desktop app is published it will be available in various repositories (winget, homebrew, etc.). I intended to also publish to the Windows/Mac app stores, but have realized that doing so would require bundling Pandoc and that would violate Pandoc's license. So, unless I can re-build the document generation from scratch or find a good alternative you will not find it on those marketplaces. If you wish to support Verbweaver's development then you can [donate](https://verbweaver.design/donate).
 
 A self-hosted web server version with enhanced collaboration features is under development. After version 1.0 of the desktop app is completed, I will shift focus to completing the web version.
 

@@ -45,7 +45,7 @@ I was still able to accomplish *far* more in the same amount of time while achie
  
 The AI agent can spit out code. But that code is unlikely to be more useful than the AI agent's ability to understand what its use should be.
 
-> Discussing a design before implementation produced FAR greater quality of output and than letting the model read between the lines of my instructions.
+> Discussing a design before implementation produced FAR greater quality of output than letting the model read between the lines of my instructions.
 
 Before implementing any new system I explicitly told the AI agent to ask any clarifying questions it may have and discuss the instructions with me before proceeding. This resulted in a back-and-forth, with each feedback loop increasing the specificity of instructions. Often this process would make me consider design decisions and implications I had not yet thought of. Considering them ahead of time significantly reduced the burden of fixing or refining them later. Just like thinking ahead and clear, consistent communication are valuable when working with human intelligences... they are also useful when collaborating with artificial intelligences.
 

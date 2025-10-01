@@ -5,6 +5,12 @@
   <title>The Wover - Blog</title>
   <link>https://thewover.github.io/</link>
   <description>Red Teaming, .NET, and random computing topics</description>
+
+  <item>
+    <title>Creating Verbweaver</title>
+    <link>https://thewover.github.io/Creating-Verbweaver/</link>
+    <description>Verbweaver is a nonlinear writing and design suite built for your brain with the ability to procedurally generate linear documents when you need to communicate your ideas into other brains. Also, yes AI agents are actually useful (but only as much as you are at managing them). This blog post is about how and why I created Verbweaver the way that I did. To check out the app, visit the website: https://verbweaver.design/</description>
+  </item>
   
   <item>
     <title>Mixed Assemblies - Crafting Flexible C++ Reflective Stagers for .NET Assemblies</title>

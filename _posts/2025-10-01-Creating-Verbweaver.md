@@ -17,8 +17,6 @@ Currently, the desktop application is in Beta and your feedback is greatly appre
 
 You can download Verbweaver at: https://github.com/Verbweaver/verbweaver/releases
 
-![_config.yml]({{ site.baseurl }}/images//Verbweaver/mind_map.png "Mind Map")
-
 # Why make Verbweaver?
 
 *Because I wanted to use it but it did not exist.*
